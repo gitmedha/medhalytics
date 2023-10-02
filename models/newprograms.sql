@@ -14,7 +14,7 @@ WITH program_data2 AS (
         start_date, 
         end_date
     FROM
-        airbyte.programs
+        airbytedb.programs
 )
 
 -- Select data from the CTE
