@@ -139,7 +139,7 @@ cte_institutions AS (
         "created_at" AS "Institutions_created_at",
         "updated_at" AS "Institutions_updated_at"
     FROM 
-    airbytedb.institutes
+    airbytedb.institutions
 )
 
 SELECT *
