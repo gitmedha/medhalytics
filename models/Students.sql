@@ -147,7 +147,7 @@ FROM cte_students
 LEFT JOIN cte_program_enrollments ON cte_students."id" = cte_program_enrollments."Program_Enrollments_student"
 LEFT JOIN cte_batches ON cte_program_enrollments."Program_Enrollments_batch" = cte_batches."Batches_id"
 LEFT JOIN cte_institutions ON cte_program_enrollments."Program_Enrollments_institution" = cte_institutions."Institutions_id"
-LIMIT 1048575;
+
 
 
 
