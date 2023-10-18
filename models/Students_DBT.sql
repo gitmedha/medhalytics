@@ -2,8 +2,7 @@
 {{
 config(
     materialized='table',
-    schema='medhalytics'
-    )
+        )
     }}
 
 WITH cte_students AS (
