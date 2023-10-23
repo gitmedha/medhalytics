@@ -60,7 +60,7 @@ cte_employment_connections AS (
         "reason_if_rejected_other" AS "employment_connections_reason_if_rejected_other",
         'SIS' AS "Source"
     FROM 
-    airbyte.employment_connections
+    airbytedb.employment_connections
 )
 
 
