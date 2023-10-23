@@ -39,7 +39,7 @@ WITH cte_students AS (
         "how_did_you_hear_about_us" AS "how_did_you_hear_about_us",
         "how_did_you_hear_about_us_other" AS "how_did_you_hear_about_us_other",
         "family_annual_income" AS "family_annual_income",
-        'SIS' AS "source" -- Denotes the source of the table, custom field
+        'SIS' AS "source" 
     airbytedb.students
 )
 
