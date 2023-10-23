@@ -1,9 +1,4 @@
 
-{{
-config(
-    materialized='table',
-        )
-    }}
 
 WITH cte_students AS (
     SELECT
