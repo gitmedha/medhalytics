@@ -1,7 +1,8 @@
 WITH cte_students AS (
     SELECT
-        "id" AS "students_id",
-    FROM airbytedb.students
+        "id" AS "students_id"
+    FROM 
+    airbytedb.students
 ),
 
 cte_opportunities AS (
@@ -31,7 +32,8 @@ cte_opportunities AS (
         "updated_by" AS "opportunities_updated_by",
         "created_at" AS "opportunities_created_at",
         "updated_at" AS "opportunities_updated_at"
-    FROM airbytedb.opportunities
+    FROM 
+    airbytedb.opportunities
 ),
 
 cte_employment_connections AS (
@@ -57,7 +59,8 @@ cte_employment_connections AS (
         "number_of_internship_hours" AS "employment_connections_number_of_internship_hours",
         "reason_if_rejected_other" AS "employment_connections_reason_if_rejected_other"
         'SIS' AS "Source"
-    FROM airbyte.employment_connections
+    FROM 
+    airbyte.employment_connections
 )
 
 
