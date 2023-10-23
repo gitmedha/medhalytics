@@ -39,6 +39,7 @@ WITH cte_students AS (
         "how_did_you_hear_about_us" AS "how_did_you_hear_about_us",
         "how_did_you_hear_about_us_other" AS "how_did_you_hear_about_us_other",
         "family_annual_income" AS "family_annual_income"
+        FROM
     airbytedb.students
 )
 
