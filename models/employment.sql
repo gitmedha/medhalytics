@@ -57,7 +57,7 @@ cte_employment_connections AS (
         "assigned_to" AS "employment_connections_assigned_to",
         "work_engagement" AS "employment_connections_work_engagement",
         "number_of_internship_hours" AS "employment_connections_number_of_internship_hours",
-        "reason_if_rejected_other" AS "employment_connections_reason_if_rejected_other"
+        "reason_if_rejected_other" AS "employment_connections_reason_if_rejected_other",
         'SIS' AS "Source"
     FROM 
     airbyte.employment_connections
