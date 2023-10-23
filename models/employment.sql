@@ -38,26 +38,26 @@ cte_opportunities AS (
 
 cte_employment_connections AS (
     SELECT
-        "id" AS "employment_connections_id",
-        "student" AS "employment_connections_student",
-        "opportunity" AS "employment_connections_opportunity",
-        "status" AS "employment_connections_status",
-        "source" AS "employment_connections_source",
-        "start_date" AS "employment_connections_start_date",
-        "end_date" AS "employment_connections_end_date",
-        "reason_if_rejected" AS "employment_connections_reason_if_rejected",
-        "salary_offered" AS "employment_connections_salary_offered",
-        "id_in_current_sis" AS "employment_connections_id_in_current_sis",
-        "created_by_frontend" AS "employment_connections_created_by_frontend",
-        "updated_by_frontend" AS "employment_connections_updated_by_frontend",
-        "created_by" AS "employment_connections_created_by",
-        "updated_by" AS "employment_connections_updated_by",
-        "created_at" AS "employment_connections_created_at",
-        "updated_at" AS "employment_connections_updated_at",
-        "assigned_to" AS "employment_connections_assigned_to",
-        "work_engagement" AS "employment_connections_work_engagement",
-        "number_of_internship_hours" AS "employment_connections_number_of_internship_hours",
-        "reason_if_rejected_other" AS "employment_connections_reason_if_rejected_other",
+        "id" AS "id",
+        "student" AS "student",
+        "opportunity" AS "opportunity",
+        "status" AS "status",
+        "source" AS "source",
+        "start_date" AS "start_date",
+        "end_date" AS "end_date",
+        "reason_if_rejected" AS "reason_if_rejected",
+        "salary_offered" AS "salary_offered",
+        "id_in_current_sis" AS "id_in_current_sis",
+        "created_by_frontend" AS "created_by_frontend",
+        "updated_by_frontend" AS "updated_by_frontend",
+        "created_by" AS "created_by",
+        "updated_by" AS "updated_by",
+        "created_at" AS "created_at",
+        "updated_at" AS "updated_at",
+        "assigned_to" AS "assigned_to",
+        "work_engagement" AS "work_engagement",
+        "number_of_internship_hours" AS "number_of_internship_hours",
+        "reason_if_rejected_other" AS "reason_if_rejected_other",
         'SIS' AS "Source"
     FROM 
     airbytedb.employment_connections
@@ -66,6 +66,6 @@ cte_employment_connections AS (
 
 SELECT *
 FROM cte_employment_connections AS ec
-LEFT JOIN cte_students AS s ON ec.employment_connections_student = s.students_id
-LEFT JOIN cte_opportunities AS o ON ec.employment_connections_opportunity = o.opportunities_id
+LEFT JOIN cte_students AS s ON ec.student = s.students_id
+LEFT JOIN cte_opportunities AS o ON ec.opportunity = o.opportunities_id
 
