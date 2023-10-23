@@ -38,12 +38,13 @@ WITH cte_students AS (
         "registered_by" AS "registered_by",
         "how_did_you_hear_about_us" AS "how_did_you_hear_about_us",
         "how_did_you_hear_about_us_other" AS "how_did_you_hear_about_us_other",
-        "family_annual_income" AS "family_annual_income"
+        "family_annual_income" AS "family_annual_income",
+        'SIS' AS "Source"
         FROM
     airbytedb.students
 )
 
-SELECT *, 'SIS' AS "Source"
+SELECT *
 FROM cte_students;
 
 
