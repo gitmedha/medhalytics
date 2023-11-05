@@ -34,8 +34,7 @@ WITH Employers_CTE AS (
 
 
 
-
-WITH Usernames_CTE AS (
+Usernames_CTE AS (
     SELECT
         "id" AS "id",
         "username" AS "username"
@@ -45,7 +44,7 @@ WITH Usernames_CTE AS (
 
 
 
-WITH Opportunities_CTE AS (
+Opportunities_CTE AS (
     SELECT
         "id" AS "id",
         "role_or_designation" AS "role_or_designation",
@@ -79,7 +78,7 @@ WITH Opportunities_CTE AS (
 
 
 
-WITH Employers_Components_CTE AS (
+Employers_Components_CTE AS (
     SELECT
         "id" AS "id",
         "field" AS "field",
@@ -92,7 +91,7 @@ WITH Employers_Components_CTE AS (
 ),
 
 
-WITH Components_Common_Contacts_CTE AS (
+Components_Common_Contacts_CTE AS (
     SELECT
         "id" AS "id",
         "full_name" AS "full_name",
