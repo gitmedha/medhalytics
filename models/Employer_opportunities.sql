@@ -40,7 +40,7 @@ WITH Usernames_CTE AS (
         "id" AS "id",
         "username" AS "username",
     FROM 
-	airbytedb.users-permissions_user
+	airbytedb.users_permissions_user
 )
 
 
