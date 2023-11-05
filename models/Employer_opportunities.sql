@@ -38,7 +38,7 @@ WITH Employers_CTE AS (
 WITH Usernames_CTE AS (
     SELECT
         "id" AS "id",
-        "username" AS "username",
+        "username" AS "username"
     FROM 
 	airbytedb.users_permissions_user
 ),
