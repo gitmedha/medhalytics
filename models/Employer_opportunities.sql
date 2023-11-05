@@ -13,7 +13,7 @@ WITH Employers_CTE AS (
         "website" AS "website",
         "employment_contract" AS "employment_contract",
         "paid_leaves" AS "paid_leaves",
-        "emplyment_benefits" AS "emplyment_benefits",
+        "emplyment_benefits" AS "employment_benefits",
         "offer_letter" AS "offer_letter",
         "status" AS "status",
         "type" AS "type",
@@ -36,8 +36,8 @@ WITH Employers_CTE AS (
 
 Usernames_CTE AS (
     SELECT
-        "id" AS "id",
-        "username" AS "username"
+        "id" AS "user_id",
+        "username" AS "user_username"
     FROM 
 	airbytedb.users_permissions_user
 ),
@@ -46,31 +46,31 @@ Usernames_CTE AS (
 
 Opportunities_CTE AS (
     SELECT
-        "id" AS "id",
-        "role_or_designation" AS "role_or_designation",
-        "number_of_opportunities" AS "number_of_opportunities",
-        "department_or_team" AS "department_or_team",
-        "role_description" AS "role_description",
-        "salary" AS "salary",
-        "assigned_to" AS "assigned_to",
-        "employer" AS "employer",
-        "type" AS "type",
-        "status" AS "status",
-        "compensation_type" AS "compensation_type",
-        "skills_required" AS "skills_required",
-        "address" AS "address",
-        "city" AS "city",
-        "state" AS "state",
-        "pin_code" AS "pin_code",
-        "medha_area" AS "medha_area",
-        "district" AS "district",
-        "id_in_current_sis" AS "id_in_current_sis",
-        "created_by_frontend" AS "created_by_frontend",
-        "updated_by_frontend" AS "updated_by_frontend",
-        "created_by" AS "created_by",
-        "updated_by" AS "updated_by",
-        "created_at" AS "created_at",
-        "updated_at" AS "updated_at"
+        "id" AS "opportunity_id",
+        "role_or_designation" AS "opportunity_role_or_designation",
+        "number_of_opportunities" AS "opportunity_number_of_opportunities",
+        "department_or_team" AS "opportunity_department_or_team",
+        "role_description" AS "opportunity_role_description",
+        "salary" AS "opportunity_salary",
+        "assigned_to" AS "opportunity_assigned_to",
+        "employer" AS "opportunity_employer",
+        "type" AS "opportunity_type",
+        "status" AS "opportunity_status",
+        "compensation_type" AS "opportunity_compensation_type",
+        "skills_required" AS "opportunity_skills_required",
+        "address" AS "opportunity_address",
+        "city" AS "opportunity_city",
+        "state" AS "opportunity_state",
+        "pin_code" AS "opportunity_pin_code",
+        "medha_area" AS "opportunity_medha_area",
+        "district" AS "opportunity_district",
+        "id_in_current_sis" AS "opportunity_id_in_current_sis",
+        "created_by_frontend" AS "opportunity_created_by_frontend",
+        "updated_by_frontend" AS "opportunity_updated_by_frontend",
+        "created_by" AS "opportunity_created_by",
+        "updated_by" AS "opportunity_updated_by",
+        "created_at" AS "opportunity_created_at",
+        "updated_at" AS "opportunity_updated_at"
     FROM 
 	airbytedb.opportunities
 ),
@@ -80,12 +80,12 @@ Opportunities_CTE AS (
 
 Employers_Components_CTE AS (
     SELECT
-        "id" AS "id",
-        "field" AS "field",
-        "order" AS "order",
-        "component_type" AS "component_type",
-        "component_id" AS "component_id",
-        "employer_id" AS "employer_id"
+        "id" AS "employer_components_id",
+        "field" AS "employer_components_field",
+        "order" AS "employer_components_order",
+        "component_type" AS "employer_components_component_type",
+        "component_id" AS "employer_components_component_id",
+        "employer_id" AS "employer_components_employer_id"
     FROM 
 	airbytedb.employers_components
 ),
@@ -93,18 +93,18 @@ Employers_Components_CTE AS (
 
 Components_Common_Contacts_CTE AS (
     SELECT
-        "id" AS "id",
-        "full_name" AS "full_name",
-        "designation" AS "designation",
-        "phone" AS "phone",
-        "email" AS "email"
+        "id" AS "components_common_contacts_id",
+        "full_name" AS "ccomponents_common_contacts_full_name",
+        "designation" AS "ccomponents_common_contacts_designation",
+        "phone" AS "components_common_contacts_phone",
+        "email" AS "components_common_contacts_email"
     FROM 
 	airbytedb.components_common_contacts
 )
 
 SELECT *
 FROM Components_Common_Contacts_CTE AS CCC
-LEFT JOIN Employers_Components_CTE AS EC ON CCC.id = EC.component_id
-LEFT JOIN Employers_CTE AS E ON EC.employer_id = E.id
-LEFT JOIN Opportunities_CTE AS O ON E.id = O.employer
-LEFT JOIN Usernames_CTE AS U ON O.assigned_to = U.id
+LEFT JOIN Employers_Components_CTE AS EC ON CCC.components_common_contacts_id = EC.employer_components_component_id
+LEFT JOIN Employers_CTE AS E ON EC.employer_components_component_id = E.id
+LEFT JOIN Opportunities_CTE AS O ON E.id = O.opportunity_employer
+LEFT JOIN Usernames_CTE AS U ON O.opportunity_assigned_to = U.user_id
