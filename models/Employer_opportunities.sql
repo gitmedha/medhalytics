@@ -30,7 +30,7 @@ WITH Employers_CTE AS (
         "employee_benefits" AS "employee_benefits"
     FROM 
 	airbytedb.employers
-)
+),
 
 
 
@@ -41,7 +41,7 @@ WITH Usernames_CTE AS (
         "username" AS "username",
     FROM 
 	airbytedb.users_permissions_user
-)
+),
 
 
 
@@ -74,7 +74,7 @@ WITH Opportunities_CTE AS (
         "updated_at" AS "updated_at"
     FROM 
 	airbytedb.opportunities
-)
+),
 
 
 
@@ -89,7 +89,7 @@ WITH Employers_Components_CTE AS (
         "employer_id" AS "employer_id"
     FROM 
 	airbytedb.employers_components
-)
+),
 
 
 WITH Components_Common_Contacts_CTE AS (
@@ -102,7 +102,6 @@ WITH Components_Common_Contacts_CTE AS (
     FROM 
 	airbytedb.components_common_contacts
 )
-
 
 SELECT *
 FROM Components_Common_Contacts_CTE AS CCC
