@@ -105,6 +105,6 @@ Components_Common_Contacts_CTE AS (
 SELECT *
 FROM Components_Common_Contacts_CTE AS CCC
 LEFT JOIN Employers_Components_CTE AS EC ON CCC.id = EC.component_id
-LEFT JOIN Employers_CTE AS E ON EC.employer_id = E.Employers_id
+LEFT JOIN Employers_CTE AS E ON EC.employer_id = E.id
 LEFT JOIN Opportunities_CTE AS O ON E.Employers_id = O.employer
 LEFT JOIN Usernames_CTE AS U ON O.assigned_to = U.id
