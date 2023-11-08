@@ -19,10 +19,10 @@ WITH cte_survey AS (
   'title' AS "Survey_title", 
   'status' AS "Survey_status", 
   'program' AS "Survey_program", 
-  'SIS' AS "Source"
-  'Student' AS "Student"
-  'Batch' AS "Batch"
-  'Student' AS "Question/Response"
+  'SIS' AS "Source",
+  'Student' AS "Student",
+  'Batch' AS "Batch",
+  'Student' AS "Question_Response"
    )
 
 SELECT *
