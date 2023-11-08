@@ -108,3 +108,4 @@ LEFT JOIN Employers_Components_CTE AS EC ON CCC.components_common_contacts_id = 
 LEFT JOIN Employers_CTE AS E ON EC.employer_components_component_id = E.id
 LEFT JOIN Opportunities_CTE AS O ON E.id = O.opportunity_employer
 LEFT JOIN Usernames_CTE AS U ON O.opportunity_assigned_to = U.user_id
+order by E.id
