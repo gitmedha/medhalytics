@@ -41,7 +41,7 @@ WITH cte_students AS (
 
 SELECT *
 FROM cte_students
-order by students_id
+order by id
 
 
 
