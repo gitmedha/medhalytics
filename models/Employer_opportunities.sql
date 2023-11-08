@@ -103,9 +103,9 @@ Components_Common_Contacts_CTE AS (
 )
 
 SELECT *
-FROM Components_Common_Contacts_CTE AS CCC
-LEFT JOIN Employers_Components_CTE AS EC ON CCC.components_common_contacts_id = EC.employer_components_component_id
-LEFT JOIN Employers_CTE AS E ON EC.employer_components_component_id = E.id
+FROM Employers_CTE AS E
+LEFT JOIN Employers_Components_CTE AS EC ON E.id = EC.employer_components_employer_id
+LEFT JOIN Components_Common_Contacts_CTE AS CCC ON EC.employer_components_component_id = CCC.components_common_contacts_id
 LEFT JOIN Opportunities_CTE AS O ON E.id = O.opportunity_employer
 LEFT JOIN Usernames_CTE AS U ON O.opportunity_assigned_to = U.user_id
 order by E.id
