@@ -113,4 +113,4 @@ FROM cte_program_enrollments AS pe
 LEFT JOIN cte_students AS s ON pe.student = s.students_id
 LEFT JOIN cte_institutions AS i ON pe.institution = i.institutions_id
 LEFT JOIN cte_batches AS b ON pe.batch = b.batches_id
-
+order by s.students_id

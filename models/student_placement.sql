@@ -68,4 +68,4 @@ SELECT *
 FROM cte_employment_connections AS ec
 LEFT JOIN cte_students AS s ON ec.student = s.students_id
 LEFT JOIN cte_opportunities AS o ON ec.opportunity = o.opportunities_id
-
+order by s.students_id
