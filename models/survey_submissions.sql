@@ -11,7 +11,7 @@ WITH cte_survey AS (
   'The Answer' AS "the_answer", 
   'Answer ID' AS "answer_id", 
   'Program ID' AS "program_id",
-  'Program Name' AS "program_name"
+  'Program Name' AS "program_name",
   'created By' AS "created_by", 
   'updated' AS "updated_by", 
   'created_at' AS "created_at", 
