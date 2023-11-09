@@ -134,19 +134,19 @@ grants_cte AS (
 -- CTE for the 'programs' table
 programs_cte AS (
     SELECT
-        "id" AS "Programs_id",
-        "name" AS "Programs_name",
-        "status" AS "Programs_status", 
-		"program_type" AS "Programs_program_type",
-		"start_date" AS "Programs_start_date",
-		"end_date" AS "Programs_end_date", 
-		"show_on_student_signup_form" AS "Programs_show_on_student_signup_form", 
-		"default_enrollment_batch" AS "Programs_default_enrollment_batch", 
-		"created_by" AS "Programs_created_by",
-		"updated_by" AS "Programs_updated_by", 
-		"created_at" AS "Programs_created_at", 
-		"updated_at" AS "Programs_updated_at",
-		"certificate" AS "Programs_certificate"
+        "id" AS "programs_id",
+        "name" AS "programs_name",
+        "status" AS "programs_status", 
+		"program_type" AS "programs_program_type",
+		"start_date" AS "programs_start_date",
+		"end_date" AS "programs_end_date", 
+		"show_on_student_signup_form" AS "programs_show_on_student_signup_form", 
+		"default_enrollment_batch" AS "programs_default_enrollment_batch", 
+		"created_by" AS "programs_created_by",
+		"updated_by" AS "programs_updated_by", 
+		"created_at" AS "programs_created_at", 
+		"updated_at" AS "programs_updated_at",
+		"certificate" AS "programs_certificate"
 		
     FROM 
 	airbytedb.programs
@@ -159,5 +159,5 @@ LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrol
 LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
 LEFT JOIN institutions_cte ON cte_program_enrollments.institution = institutions_cte.institutions_id
 LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
-LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.Programs_id
+LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.programs_id
 Order by cte_program_enrollments.id
