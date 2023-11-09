@@ -20,8 +20,8 @@ WITH cte_survey AS (
   'status' AS "Survey_status", 
   'program' AS "Survey_program", 
   'SIS' AS "Source",
-  'Student' AS "Student"::BOOLEAN,
-  'Batch' AS "Batch"::BOOLEAN,
+  'True' AS "Student",
+  'False' AS "Batch",
   'Student' AS "Question_Response"
    )
 
