@@ -19,7 +19,6 @@ WITH cte_survey AS (
   'Pre or Post' AS "Survey_type", 
   'title' AS "Survey_title", 
   'status' AS "Survey_status", 
-  'program' AS "Survey_program", 
   'SIS' AS "Source",
   'True' AS "Student",
   'False' AS "Batch",
