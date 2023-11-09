@@ -155,7 +155,7 @@ programs_cte AS (
 -- Main query combining the CTEs
 SELECT *
 FROM cte_students
-LEFT JOIN cte_program_enrollments ON cte_students.id = cte_program_enrollments.student
+LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrollments.student
 LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
 LEFT JOIN institutions_cte ON cte_program_enrollments.institution = institutions_cte.institutions_id
 LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
