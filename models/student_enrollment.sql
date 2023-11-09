@@ -1,6 +1,6 @@
 WITH cte_students AS (
     SELECT
-        "id" AS "student_id"
+        "id" AS "student_id",
         "student_id" AS "student_SIS_id",
 		'SIS' AS "Source"
     FROM 
