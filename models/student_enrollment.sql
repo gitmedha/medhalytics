@@ -159,5 +159,5 @@ LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrol
 LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
 LEFT JOIN institutions_cte ON cte_program_enrollments.institution = institutions_cte.institutions_id
 LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
-LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.id
-Order by programs_cte.id
+LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.Programs_id
+Order by cte_program_enrollments.id
