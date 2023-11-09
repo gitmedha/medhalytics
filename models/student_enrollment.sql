@@ -1,11 +1,12 @@
 WITH cte_students AS (
     SELECT
-        "id" AS "students_id",
+        "student_id" AS "student_id",
 		'SIS' AS "Source"
     FROM 
     airbytedb.students
 ),
 
+-- CTE for the 'program_enrollments' table
 cte_program_enrollments AS (
     SELECT
         "id" AS "id",
@@ -44,35 +45,8 @@ cte_program_enrollments AS (
     airbytedb.program_enrollments
 ),
 
-cte_institutions AS (
-    SELECT
-        "id" AS "institutions_id",
-        "name" AS "institutions_name",
-        "assigned_to" AS "institutions_assigned_to",
-        "website" AS "institutions_website",
-        "phone" AS "institutions_phone",
-        "email" AS "institutions_email",
-        "description" AS "institutions_description",
-        "type" AS "institutions_type",
-        "status" AS "institutions_status",
-        "id_in_current_sis" AS "institutions_id_in_current_sis",
-        "address" AS "institutions_address",
-        "city" AS "institutions_city",
-        "state" AS "institutions_state",
-        "pin_code" AS "institutions_pin_code",
-        "medha_area" AS "institutions_medha_area",
-        "district" AS "institutions_district",
-        "created_by_frontend" AS "institutions_created_by_frontend",
-        "updated_by_frontend" AS "institutions_updated_by_frontend",
-        "created_by" AS "institutions_created_by",
-        "updated_by" AS "institutions_updated_by",
-        "created_at" AS "institutions_created_at",
-        "updated_at" AS "institutions_updated_at"
-    FROM 
-    airbytedb.institutions
-),
-
-cte_batches AS (
+-- CTE for the 'batches' table
+batches_cte AS (
     SELECT
         "id" AS "batches_id",
         "name" AS "batches_name",
@@ -105,12 +79,84 @@ cte_batches AS (
         "link_sent_at" AS "batches_link_sent_at"
     FROM 
     airbytedb.batches
+),
+
+-- CTE for the 'institutions' table
+institutions_cte AS (
+     SELECT
+        "id" AS "institutions_id",
+        "name" AS "institutions_name",
+        "assigned_to" AS "institutions_assigned_to",
+        "website" AS "institutions_website",
+        "phone" AS "institutions_phone",
+        "email" AS "institutions_email",
+        "description" AS "institutions_description",
+        "type" AS "institutions_type",
+        "status" AS "institutions_status",
+        "id_in_current_sis" AS "institutions_id_in_current_sis",
+        "address" AS "institutions_address",
+        "city" AS "institutions_city",
+        "state" AS "institutions_state",
+        "pin_code" AS "institutions_pin_code",
+        "medha_area" AS "institutions_medha_area",
+        "district" AS "institutions_district",
+        "created_by_frontend" AS "institutions_created_by_frontend",
+        "updated_by_frontend" AS "institutions_updated_by_frontend",
+        "created_by" AS "institutions_created_by",
+        "updated_by" AS "institutions_updated_by",
+        "created_at" AS "institutions_created_at",
+        "updated_at" AS "institutions_updated_at"
+    FROM 
+    airbytedb.institutions
+),
+
+-- CTE for the 'grants' table
+grants_cte AS (
+    SELECT
+        "id" AS "grants_id",
+        "name" AS "grants_name",
+		"status" AS "grants_status",
+		"start_date" AS "grants_start_date",
+        "end_date" AS "grants_end_date",
+		"donor" AS "grants_Donor",
+		"contributon_type" AS "grants_contributon_type",
+		"cost_center_in_tally" AS "grants_cost_center_in_tally", 
+		"created_by" AS "grants_created_by", 
+		"updated_by" AS "grants_updated_by", 
+		"created_at" AS "grants_created_at", 
+		"updated_at" AS "grants_updated_at"
+        
+    FROM 
+    airbytedb.grants
+),
+
+-- CTE for the 'programs' table
+programs_cte AS (
+    SELECT
+        "id" AS "Programs_id",
+        "name" AS "Programs_name",
+        "status" AS "Programs_status", 
+		"program_type" AS "Programs_program_type",
+		"start_date" AS "Programs_start_date",
+		"end_date" AS "Programs_end_date", 
+		"show_on_student_signup_form" AS "Programs_show_on_student_signup_form", 
+		"default_enrollment_batch" AS "Programs_default_enrollment_batch", 
+		"created_by" AS "Programs_created_by",
+		"updated_by" AS "Programs_updated_by", 
+		"created_at" AS "Programs_created_at", 
+		"updated_at" AS "Programs_updated_at",
+		"certificate" AS "Programs_certificate"
+		
+    FROM 
+	airbytedb.programs
 )
 
-
+-- Main query combining the CTEs
 SELECT *
-FROM cte_program_enrollments AS pe
-LEFT JOIN cte_students AS s ON pe.student = s.students_id
-LEFT JOIN cte_institutions AS i ON pe.institution = i.institutions_id
-LEFT JOIN cte_batches AS b ON pe.batch = b.batches_id
-order by pe.id
+FROM cte_students
+LEFT JOIN cte_program_enrollments ON cte_students.id = cte_program_enrollments.student
+LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
+LEFT JOIN institutions_cte ON cte_program_enrollments.institution = institutions_cte.institutions_id
+LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
+LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.id
+Order by programs_cte.id
