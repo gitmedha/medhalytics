@@ -1,6 +1,7 @@
 WITH cte_students AS (
     SELECT
-        "student_id" AS "student_id",
+        "id" AS "student_id"
+        "student_id" AS "student_SIS_id",
 		'SIS' AS "Source"
     FROM 
     airbytedb.students
