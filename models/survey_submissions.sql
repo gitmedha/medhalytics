@@ -19,7 +19,7 @@ WITH cte_survey AS (
   'Pre or Post' AS "Survey_type", 
   'title' AS "Survey_title", 
   'status' AS "Survey_status", 
-  'SIS' AS "Source",
+  'Alchemer' AS "Source",
   'True' AS "Student",
   'False' AS "Batch",
   'Student' AS "Question_Response"
