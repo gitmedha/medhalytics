@@ -1,6 +1,6 @@
 WITH cte_survey AS (
     SELECT
-  'Survey ID' AS "Survey_id", 
+  'Survey ID' AS "survey_id", 
   'Section Name' AS "section_name", 
   'Section ID' AS "section_id", 
   'Link ID' AS "link_id", 
@@ -28,4 +28,4 @@ WITH cte_survey AS (
 
 SELECT *
 FROM cte_survey
-order by Survey_id
+order by survey_id
