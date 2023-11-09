@@ -1,6 +1,6 @@
 WITH cte_survey AS (
     SELECT
-  'Survey ID' AS "Surveys_id", 
+  'Survey ID' AS "Survey_id", 
   'Survey Submission ID' AS "survey_submission_id", 
   'Link ID' AS "link_id", 
   'Session ID' AS "session_id", 
@@ -20,10 +20,11 @@ WITH cte_survey AS (
   'status' AS "Survey_status", 
   'program' AS "Survey_program", 
   'SIS' AS "Source",
-  'Student' AS "Student",
-  'Batch' AS "Batch",
+  'Student' AS "Student"::BOOLEAN,
+  'Batch' AS "Batch"::BOOLEAN,
   'Student' AS "Question_Response"
    )
 
 SELECT *
 FROM cte_survey
+order by Survey_id
