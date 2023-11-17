@@ -136,7 +136,7 @@ programs_cte AS (
 users_cte AS (
     SELECT
         "id" AS "user_id",
-        "username" AS "user_name",
+        "username" AS "user_name"
         	
     FROM 
 	airbytedb.users_permissions_user
