@@ -1,4 +1,4 @@
--- Define the users_cte CTE
+-- Define CTE for students
 WITH cte_students AS (
     SELECT
         "id" AS "student_id",
@@ -6,6 +6,15 @@ WITH cte_students AS (
 		'SIS' AS "Source"
     FROM 
     airbytedb.students
+),
+
+-- Define the users_cte CTE
+users_cte AS (
+    SELECT
+        "id" AS "user_id",
+        "username" AS "user_name"
+    FROM 
+        airbytedb.users_permissions_user
 ),
 
 -- CTE for the 'program_enrollments' table
@@ -45,13 +54,6 @@ cte_program_enrollments AS (
     airbytedb.program_enrollments
 ),
 
-users_cte AS (
-    SELECT
-        "id" AS "user_id",
-        "username" AS "user_name"
-    FROM 
-        airbytedb.users_permissions_user
-),
 
 
 -- CTE for the 'batches' table
