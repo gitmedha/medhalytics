@@ -164,12 +164,9 @@ programs_cte AS (
 )
 
 -- Main query combining the CTEs
+-- Main query combining the CTEs
 SELECT
-    u2."program_updated_by_user",
-    u3."program_created_by_user",
-    u1."institution_assigned_to_user",
-    cte_students."student_SIS_id",
-    cte_students."Source",
+    cte_program_enrollments."id",
     cte_program_enrollments."status",
     cte_program_enrollments."registration_date",
     cte_program_enrollments."fee_status",
@@ -196,6 +193,8 @@ SELECT
     cte_program_enrollments."higher_education_course_name",
     cte_program_enrollments."higher_education_year_of_course_completion",
     cte_program_enrollments."course_name_other",
+    cte_students."student_SIS_id",
+    cte_students."Source",
     batches_cte."batches_name",
     batches_cte."batches_start_date",
     batches_cte."batches_end_date",
@@ -220,7 +219,7 @@ SELECT
     batches_cte."batches_require_assignment_file_for_certification",
     batches_cte."batches_link_sent_at",
     institutions_cte."institutions_name",
-    institutions_cte."institutions_assigned_to",
+    u1."institution_assigned_to_user",
     institutions_cte."institutions_website",
     institutions_cte."institutions_phone",
     institutions_cte."institutions_email",
@@ -245,8 +244,8 @@ SELECT
     programs_cte."programs_program_type",
     programs_cte."programs_start_date",
     programs_cte."programs_end_date",
-    programs_cte."programs_created_by",
-    programs_cte."programs_updated_by",
+    u3."program_created_by_user",
+    u2."program_updated_by_user",
     programs_cte."programs_created_at",
     programs_cte."programs_updated_at",
     programs_cte."programs_certificate"
@@ -260,24 +259,5 @@ LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
 LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.programs_id
 LEFT JOIN users1_cte AS u2 ON programs_cte.programs_updated_by = u2.user_id1
 LEFT JOIN users2_cte AS u3 ON programs_cte.programs_created_by = u3.user_id2
-ORDER BY cte_program_enrollments.id
-
-
-/*
--- Main query combining the CTEs
-SELECT *
-
-FROM cte_students
-LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrollments.student
-LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
-LEFT JOIN institutions_cte AS i1 ON cte_program_enrollments.institution = i1.institutions_id
-LEFT JOIN users_cte AS u1 ON i1.institutions_assigned_to = u1.user_id
-LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
-LEFT JOIN programs_cte AS p1 ON batches_cte.batches_program = p1.programs_id
-LEFT JOIN users1_cte AS u2 ON p1.programs_updated_by = u2.user_id1
-LEFT JOIN users2_cte AS u3 ON p1.programs_created_by = u3.user_id2
-
---LEFT JOIN programs_cte as p2 ON users_cte.user_id = p2.programs_updated_by
---LEFT JOIN programs_cte as p3 ON users_cte.user_id = p3.programs_created_by
-Order by cte_program_enrollments.id
-*/
+ORDER BY
+    cte_program_enrollments."id"
