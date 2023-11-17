@@ -50,7 +50,7 @@ cte_students AS (
 
 employers_CTE AS (
     SELECT
-        "id" AS "id",
+        "id" AS "emp_id",
         "name" AS "Employer_name"
     FROM 
 	airbytedb.employers
@@ -170,5 +170,5 @@ LEFT JOIN users_cte1 AS u1 ON ec."created_by" = u1."user_id1"
 LEFT JOIN users_cte2 AS u2 ON ec."updated_by" = u2."user_id2"
 LEFT JOIN users_cte3 AS u3 ON ec."assigned_to" = u3."user_id3"
 LEFT JOIN users_cte4 AS u4 ON o."opportunities_assigned_to" = u4."user_id4"
-LEFT JOIN employers_CTE AS e ON o."opportunity_employer" = e."id"
+LEFT JOIN employers_CTE AS e ON o."opportunities_employer" = e."emp_id"
 ORDER BY ec."id"
