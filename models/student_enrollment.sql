@@ -141,7 +141,7 @@ programs_cte AS (
 		
     FROM 
 	airbytedb.programs
-),
+)
 
 
 -- Main query combining the CTEs
