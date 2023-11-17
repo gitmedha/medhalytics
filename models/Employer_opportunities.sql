@@ -1,4 +1,17 @@
-WITH Components_Common_Contacts_CTE AS (
+WITH Employers_Components_CTE AS (
+    SELECT
+        "id" AS "employer_components_id",
+        "field" AS "employer_components_field",
+        "order" AS "employer_components_order",
+        "component_type" AS "employer_components_component_type",
+        "component_id" AS "employer_components_component_id",
+        "employer_id" AS "employer_components_employer_id"
+    FROM 
+	airbytedb.employers_components
+),
+
+
+Components_Common_Contacts_CTE AS (
     SELECT
         "id" AS "components_common_contacts_id",
         "full_name" AS "ccomponents_common_contacts_full_name",
@@ -107,17 +120,6 @@ Usernames10_CTE AS (
 ),
 
 
-Employers_Components_CTE AS (
-    SELECT
-        "id" AS "employer_components_id",
-        "field" AS "employer_components_field",
-        "order" AS "employer_components_order",
-        "component_type" AS "employer_components_component_type",
-        "component_id" AS "employer_components_component_id",
-        "employer_id" AS "employer_components_employer_id"
-    FROM 
-	airbytedb.employers_components
-),
 
 Opportunities_CTE AS (
     SELECT
