@@ -1,3 +1,13 @@
+-- Define the users_cte CTE
+WITH users_cte AS (
+    SELECT
+        "id" AS "user_id",
+        "username" AS "user_name"
+    FROM 
+        airbytedb.users_permissions_user
+),
+
+
 WITH cte_students AS (
     SELECT
         "id" AS "student_id",
@@ -133,15 +143,6 @@ programs_cte AS (
 	airbytedb.programs
 ),
 
--- CTE for the 'users' table
-users_cte AS (
-    SELECT
-        "id" AS "user_id",
-        "username" AS "user_name"
-        	
-    FROM 
-	airbytedb.users_permissions_user
-)
 
 -- Main query combining the CTEs
 SELECT *
