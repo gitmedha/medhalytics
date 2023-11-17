@@ -147,7 +147,7 @@ grants_cte AS (
 -- CTE for the 'programs' table
 programs_cte AS (
     SELECT
-        "id" AS "prog1_id",
+        "id" AS "programs_id",
         "name" AS "programs_name",
         "status" AS "programs_status", 
 		"program_type" AS "programs_program_type",
@@ -165,14 +165,18 @@ programs_cte AS (
 
 
 -- Main query combining the CTEs
-SELECT *
+SELECT 
+
+users_cte.user_id
+
+
 FROM cte_students
 LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrollments.student
 LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
 LEFT JOIN institutions_cte AS i1 ON cte_program_enrollments.institution = i1.institutions_id
 LEFT JOIN users_cte AS u1 ON i1.institutions_assigned_to = u1.user_id
 LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
-LEFT JOIN programs_cte AS p1 ON batches_cte.batches_program = p1.prog1_id
+LEFT JOIN programs_cte AS p1 ON batches_cte.batches_program = p1.programs_id
 LEFT JOIN users1_cte AS u2 ON p1.programs_updated_by = u2.user_id1
 LEFT JOIN users2_cte AS u3 ON p1.programs_created_by = u3.user_id2
 
