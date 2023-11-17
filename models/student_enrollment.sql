@@ -12,7 +12,7 @@ WITH cte_students AS (
 users_cte AS (
     SELECT
         "id" AS "user_id",
-        "username" AS "user_name"
+        "username" AS "institution_assigned_to_user"
     FROM 
         airbytedb.users_permissions_user
 ),
@@ -21,7 +21,7 @@ users_cte AS (
 users1_cte AS (
     SELECT
         "id" AS "user_id1",
-        "username" AS "user_name1"
+        "username" AS "program_updated_by_user"
     FROM 
         airbytedb.users_permissions_user
 ),
@@ -30,7 +30,7 @@ users1_cte AS (
 users2_cte AS (
     SELECT
         "id" AS "user_id2",
-        "username" AS "user_name2"
+        "username" AS "program_created_by_user"
     FROM 
         airbytedb.users_permissions_user
 ),
