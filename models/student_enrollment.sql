@@ -167,7 +167,7 @@ programs_cte AS (
 SELECT
     u2."program_updated_by_user",
     u3."program_created_by_user",
-    users_cte."institution_assigned_to_user",
+    u1."institution_assigned_to_user",
     cte_students."student_SIS_id",
     cte_students."Source",
     cte_program_enrollments."status",
