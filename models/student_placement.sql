@@ -54,7 +54,7 @@ employers_CTE AS (
         "name" AS "Employer_name"
     FROM 
 	airbytedb.employers
-)
+),
 
 cte_opportunities AS (
     SELECT
