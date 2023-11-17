@@ -140,7 +140,7 @@ users_cte AS (
         	
     FROM 
 	airbytedb.users-permissions_user
-),
+)
 
 -- Main query combining the CTEs
 SELECT *
