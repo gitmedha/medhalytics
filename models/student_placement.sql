@@ -1,9 +1,60 @@
-WITH cte_students AS (
+-- CTE for Employment connection - Created by user
+WITH users_cte1 AS (
     SELECT
-        "id" AS "students_id"
+        "id" AS "user_id1",
+        "username" AS "Created_by_user"
+    FROM 
+        airbytedb.users_permissions_user
+),
+
+-- CTE for Employment connection - updated by user
+
+users_cte2 AS (
+    SELECT
+        "id" AS "user_id2",
+        "username" AS "updated_by_user"
+    FROM 
+        airbytedb.users_permissions_user
+),
+
+-- CTE for Employment connection - assigned to user 
+users_cte3 AS (
+    SELECT
+        "id" AS "user_id3",
+        "username" AS "employer_connection_assigned_to_user"
+    FROM 
+        airbytedb.users_permissions_user
+),
+
+-- CTE for Employment connection - Opportunity assigned to user 
+
+users_cte4 AS (
+    SELECT
+        "id" AS "user_id4",
+        "username" AS "opportunity_assigned_to_user"
+    FROM 
+        airbytedb.users_permissions_user
+),
+
+
+cte_students AS (
+    SELECT
+        "id" AS "students_id",
+        "full_name" AS "student_name"
     FROM 
     airbytedb.students
 ),
+
+
+
+
+employers_CTE AS (
+    SELECT
+        "id" AS "id",
+        "name" AS "Employer_name"
+    FROM 
+	airbytedb.employers
+)
 
 cte_opportunities AS (
     SELECT
@@ -63,9 +114,61 @@ cte_employment_connections AS (
     airbytedb.employment_connections
 )
 
-
-SELECT *
-FROM cte_employment_connections AS ec
-LEFT JOIN cte_students AS s ON ec.student = s.students_id
-LEFT JOIN cte_opportunities AS o ON ec.opportunity = o.opportunities_id
-order by ec.id
+SELECT
+    ec."id",
+    u4."opportunity_assigned_to_user",
+    u3."employer_connection_assigned_to_user",
+    u1."Created_by_user",
+    u2."updated_by_user",
+    s."student_name",
+    e."Employer_name" AS "employer_name",
+    s."students_id",
+    ec."created_by",
+    ec."updated_by",
+    ec."status",
+    ec."source",
+    ec."start_date",
+    ec."end_date",
+    ec."reason_if_rejected",
+    ec."salary_offered",
+    ec."created_at" AS "employment_created_at",
+    ec."updated_at" AS "employment_updated_at",
+    ec."assigned_to",
+    o."opportunities_assigned_to",
+    o."opportunities_employer",
+    ec."work_engagement",
+    ec."number_of_internship_hours",
+    ec."reason_if_rejected_other",
+    ec."Source",
+    o."opportunities_role_or_designation",
+    o."opportunities_number_of_opportunities",
+    o."opportunities_department_or_team",
+    o."opportunities_role_description",
+    o."opportunities_salary",
+    o."opportunities_type",
+    o."opportunities_status",
+    o."opportunities_compensation_type",
+    o."opportunities_skills_required",
+    o."opportunities_address",
+    o."opportunities_city",
+    o."opportunities_state",
+    o."opportunities_pin_code",
+    o."opportunities_medha_area",
+    o."opportunities_district",
+    o."opportunities_id_in_current_sis",
+    o."opportunities_created_by_frontend",
+    o."opportunities_updated_by_frontend",
+    o."opportunities_created_by",
+    o."opportunities_updated_by",
+    o."opportunities_created_at" AS "opportunities_created_at",
+    o."opportunities_updated_at" AS "opportunities_updated_at"
+FROM
+    cte_employment_connections AS ec
+LEFT JOIN cte_students AS s ON ec."student" = s."students_id"
+LEFT JOIN cte_opportunities AS o ON ec."opportunity" = o."opportunities_id"
+LEFT JOIN users_cte1 AS u1 ON ec."created_by" = u1."user_id1"
+LEFT JOIN users_cte2 AS u2 ON ec."updated_by" = u2."user_id2"
+LEFT JOIN users_cte3 AS u3 ON ec."assigned_to" = u3."user_id3"
+LEFT JOIN users_cte4 AS u4 ON o."opportunity_assigned_to" = u4."user_id4"
+LEFT JOIN employers_CTE AS e ON o."opportunity_employer" = e."id"
+ORDER BY ec."id"
