@@ -17,6 +17,24 @@ users_cte AS (
         airbytedb.users_permissions_user
 ),
 
+-- Define the users_cte CTE
+users1_cte AS (
+    SELECT
+        "id" AS "user_id",
+        "username" AS "user_name"
+    FROM 
+        airbytedb.users_permissions_user
+),
+
+-- Define the users_cte CTE
+users2_cte AS (
+    SELECT
+        "id" AS "user_id",
+        "username" AS "user_name"
+    FROM 
+        airbytedb.users_permissions_user
+),
+
 -- CTE for the 'program_enrollments' table
 cte_program_enrollments AS (
     SELECT
@@ -147,19 +165,17 @@ programs_cte AS (
 
 
 -- Main query combining the CTEs
-SELECT *,
-u2.user_id as user_id_1,
-u3.user_id as user_id_2
-
+SELECT *
 FROM cte_students
 LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrollments.student
 LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
-LEFT JOIN institutions_cte as i1 ON cte_program_enrollments.institution = i1.institutions_id
-LEFT JOIN users_cte as u1 ON i1.institutions_assigned_to = u1.user_id
+LEFT JOIN institutions_cte AS i1 ON cte_program_enrollments.institution = i1.institutions_id
+LEFT JOIN users_cte AS u1 ON i1.institutions_assigned_to = u1.user_id
 LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
-LEFT JOIN programs_cte as p1 ON batches_cte.batches_program = p1.prog1_id
-LEFT JOIN users_cte as u2 ON p1.programs_updated_by = u2.user_id_2
-LEFT JOIN users_cte as u3 ON p1.programs_created_by = u3.user_id_3
+LEFT JOIN programs_cte AS p1 ON batches_cte.batches_program = p1.prog1_id
+LEFT JOIN users1_cte AS u2 ON p1.programs_updated_by = u2.user_id
+LEFT JOIN users2_cte AS u3 ON p1.programs_created_by = u3.user_id
+
 --LEFT JOIN programs_cte as p2 ON users_cte.user_id = p2.programs_updated_by
 --LEFT JOIN programs_cte as p3 ON users_cte.user_id = p3.programs_created_by
 Order by cte_program_enrollments.id
