@@ -61,6 +61,7 @@ batches_cte AS (
         "mode_of_payment" AS "batches_mode_of_payment",
         "seats_available" AS "batches_seats_available",
         "state" AS "batches_state",
+        "grant" AS "batches_grant",
         "medha_area" AS "batches_medha_area",
         "enrollment_type" AS "batches_enrollment_type",
         "id_in_current_sis" AS "batches_id_in_current_sis",
