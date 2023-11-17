@@ -165,9 +165,9 @@ programs_cte AS (
 
 -- Main query combining the CTEs
 SELECT
-    u2."username" AS "program_updated_by_user",
-    u3."username" AS "program_created_by_user",
-    u1."username" AS "institution_assigned_to_user",
+    users1_cte."username" AS "program_updated_by_user",
+  users2_cte."username" AS "program_created_by_user",
+  users_cte."username" AS "institution_assigned_to_user",
     cte_students."student_SIS_id",
     cte_students."Source",
     cte_program_enrollments."status",
