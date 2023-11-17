@@ -149,7 +149,7 @@ programs_cte AS (
 -- Main query combining the CTEs
 SELECT *,
 u2.user_id as user_id_1,
-u3.user_id as user_id_2,
+u3.user_id as user_id_2
 
 FROM cte_students
 LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrollments.student
