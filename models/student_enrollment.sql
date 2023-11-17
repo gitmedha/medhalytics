@@ -8,7 +8,7 @@ WITH users_cte AS (
 ),
 
 
-WITH cte_students AS (
+cte_students AS (
     SELECT
         "id" AS "student_id",
         "student_id" AS "student_SIS_id",
