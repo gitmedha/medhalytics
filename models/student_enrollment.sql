@@ -148,10 +148,10 @@ SELECT *
 FROM cte_students
 LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrollments.student
 LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
-LEFT JOIN institutions_cte ON cte_program_enrollments.institution = institutions_cte.institutions_id
+LEFT JOIN institutions_cte as i1 ON cte_program_enrollments.institution = i1.institutions_id
 LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
-LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.programs_id
--- LEFT JOIN programs_cte ON users_cte.id = programs_cte.updated_by
--- LEFT JOIN programs_cte ON users_cte.id = programs_cte.created_by
-LEFT JOIN institutions_cte ON users_cte.id = institutions_cte.institutions_assigned_to
+LEFT JOIN programs_cte as p1 ON batches_cte.batches_program = p1.programs_id
+LEFT JOIN programs_cte as p2 ON users_cte.id = p2.updated_by
+LEFT JOIN programs_cte as p3 ON users_cte.id = p3.created_by
+LEFT JOIN institutions_cte as i2 ON users_cte.id = i2.institutions_assigned_to
 Order by cte_program_enrollments.id
