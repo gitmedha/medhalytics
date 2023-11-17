@@ -256,7 +256,7 @@ SELECT
     O."opportunity_updated_at"
 FROM
     Components_Common_Contacts_CTE AS CCC
-LEFT JOIN Employers_CTE AS E ON EC."employer_components_employer_id" = E."id"
+LEFT JOIN Employers_CTE AS E ON Employers_Components_CTE."employer_components_employer_id" = E."id"
 LEFT JOIN Employers_Components_CTE AS EC ON CCC."components_common_contacts_id" = EC."employer_components_component_id"
 LEFT JOIN Opportunities_CTE AS O ON E."id" = O."opportunity_employer"
 LEFT JOIN Usernames1_CTE AS U1 ON E."assigned_to" = U1."user_id1"
