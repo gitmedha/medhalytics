@@ -27,16 +27,14 @@ cte_program_enrollments AS (
         "course_year" AS "course_year",
         "year_of_course_completion" AS "year_of_course_completion",
         "certification_date" AS "certification_date",
-        "institution_name_entered_by_student" AS "institution_name_entered_by_student",
-        "course_name_in_current_sis" AS "course_name_in_current_sis",
-        "id_in_current_sis" AS "id_in_current_sis",
+        "course_name_in_current_sis" AS "course_name",
         "created_by_frontend" AS "created_by_frontend",
         "updated_by_frontend" AS "updated_by_frontend",
         "created_by" AS "created_by",
         "updated_by" AS "updated_by",
         "created_at" AS "created_at",
         "updated_at" AS "updated_at",
-        "program_selected_by_student" AS "program_selected_by_student",
+        "program_selected_by_student" AS "program_name",
         "discount_code_id" AS "discount_code_id",
         "medha_program_certificate_status" AS "medha_program_certificate_status",
         "higher_education_course_name" AS "higher_education_course_name",
@@ -61,10 +59,6 @@ batches_cte AS (
         "program" AS "batches_program",
         "per_student_fees" AS "batches_per_student_fees",
         "mode_of_payment" AS "batches_mode_of_payment",
-        "name_in_current_sis" AS "batches_name_in_current_sis",
-        "institution" AS "batches_institution",
-        "grant" AS "batches_grant",
-        "include_institution_logo_in_certificates" AS "batches_include_institution_logo_in_certificates",
         "seats_available" AS "batches_seats_available",
         "state" AS "batches_state",
         "medha_area" AS "batches_medha_area",
@@ -91,20 +85,14 @@ institutions_cte AS (
         "website" AS "institutions_website",
         "phone" AS "institutions_phone",
         "email" AS "institutions_email",
-        "description" AS "institutions_description",
         "type" AS "institutions_type",
         "status" AS "institutions_status",
-        "id_in_current_sis" AS "institutions_id_in_current_sis",
         "address" AS "institutions_address",
         "city" AS "institutions_city",
         "state" AS "institutions_state",
         "pin_code" AS "institutions_pin_code",
         "medha_area" AS "institutions_medha_area",
         "district" AS "institutions_district",
-        "created_by_frontend" AS "institutions_created_by_frontend",
-        "updated_by_frontend" AS "institutions_updated_by_frontend",
-        "created_by" AS "institutions_created_by",
-        "updated_by" AS "institutions_updated_by",
         "created_at" AS "institutions_created_at",
         "updated_at" AS "institutions_updated_at"
     FROM 
@@ -120,13 +108,7 @@ grants_cte AS (
 		"start_date" AS "grants_start_date",
         "end_date" AS "grants_end_date",
 		"donor" AS "grants_Donor",
-		"contributon_type" AS "grants_contributon_type",
-		"cost_center_in_tally" AS "grants_cost_center_in_tally", 
-		"created_by" AS "grants_created_by", 
-		"updated_by" AS "grants_updated_by", 
-		"created_at" AS "grants_created_at", 
-		"updated_at" AS "grants_updated_at"
-        
+		"contributon_type" AS "grants_contributon_type"        
     FROM 
     airbytedb.grants
 ),
@@ -140,8 +122,6 @@ programs_cte AS (
 		"program_type" AS "programs_program_type",
 		"start_date" AS "programs_start_date",
 		"end_date" AS "programs_end_date", 
-		"show_on_student_signup_form" AS "programs_show_on_student_signup_form", 
-		"default_enrollment_batch" AS "programs_default_enrollment_batch", 
 		"created_by" AS "programs_created_by",
 		"updated_by" AS "programs_updated_by", 
 		"created_at" AS "programs_created_at", 
@@ -150,7 +130,17 @@ programs_cte AS (
 		
     FROM 
 	airbytedb.programs
-)
+),
+
+-- CTE for the 'users' table
+users_cte AS (
+    SELECT
+        "id" AS "user_id",
+        "username" AS "user_name",
+        	
+    FROM 
+	airbytedb.users-permissions_user
+),
 
 -- Main query combining the CTEs
 SELECT *
@@ -160,4 +150,7 @@ LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
 LEFT JOIN institutions_cte ON cte_program_enrollments.institution = institutions_cte.institutions_id
 LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
 LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.programs_id
+LEFT JOIN programs_cte ON users_cte.id = programs_cte.updated_by
+LEFT JOIN programs_cte ON users_cte.id = programs_cte.created_by
+LEFT JOIN institutions_cte ON users_cte.id = institutions_cte.institutions_assigned_to
 Order by cte_program_enrollments.id
