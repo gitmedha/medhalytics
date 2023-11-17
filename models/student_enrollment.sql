@@ -129,7 +129,7 @@ grants_cte AS (
 -- CTE for the 'programs' table
 programs_cte AS (
     SELECT
-        "id" AS "prog_id",
+        "id" AS "prog1_id",
         "name" AS "programs_name",
         "status" AS "programs_status", 
 		"program_type" AS "programs_program_type",
