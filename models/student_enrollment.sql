@@ -165,8 +165,8 @@ programs_cte AS (
 
 -- Main query combining the CTEs
 SELECT
-    users1_cte. "program_updated_by_user",
-    users2_cte."program_created_by_user",
+    u2."program_updated_by_user",
+    u3."program_created_by_user",
     users_cte."institution_assigned_to_user",
     cte_students."student_SIS_id",
     cte_students."Source",
