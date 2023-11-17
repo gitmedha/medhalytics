@@ -151,7 +151,7 @@ LEFT JOIN batches_cte ON cte_program_enrollments.batch = batches_cte.batches_id
 LEFT JOIN institutions_cte as i1 ON cte_program_enrollments.institution = i1.institutions_id
 LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
 LEFT JOIN programs_cte as p1 ON batches_cte.batches_program = p1.programs_id
-LEFT JOIN programs_cte as p2 ON users_cte.id = p2.updated_by
-LEFT JOIN programs_cte as p3 ON users_cte.id = p3.created_by
-LEFT JOIN users_cte ON institutions_cte.institutions_assigned_to = users_cte.id
+LEFT JOIN programs_cte as p2 ON users_cte.user_id = p2.updated_by
+LEFT JOIN programs_cte as p3 ON users_cte.user_id = p3.created_by
+LEFT JOIN users_cte ON institutions_cte.institutions_assigned_to = users_cte.user_id
 Order by cte_program_enrollments.id
