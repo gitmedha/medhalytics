@@ -165,10 +165,7 @@ programs_cte AS (
 
 
 -- Main query combining the CTEs
-SELECT 
-
-users_cte.user_id
-
+SELECT *
 
 FROM cte_students
 LEFT JOIN cte_program_enrollments ON cte_students.student_id = cte_program_enrollments.student
