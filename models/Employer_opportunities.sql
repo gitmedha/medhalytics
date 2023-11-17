@@ -190,6 +190,7 @@ Employers_CTE AS (
 )
 
 SELECT
+    E."id",
     U1."employer_assigned_to_user",
     U2."created_by_frontend_user",
     U3."updated_by_frontend_user",
