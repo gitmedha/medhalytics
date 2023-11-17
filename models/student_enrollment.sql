@@ -260,7 +260,7 @@ LEFT JOIN grants_cte ON batches_cte.batches_grant = grants_cte.grants_id
 LEFT JOIN programs_cte ON batches_cte.batches_program = programs_cte.programs_id
 LEFT JOIN users1_cte AS u2 ON programs_cte.programs_updated_by = u2.user_id1
 LEFT JOIN users2_cte AS u3 ON programs_cte.programs_created_by = u3.user_id2
-ORDER BY cte_program_enrollments.id;
+ORDER BY cte_program_enrollments.id
 
 
 /*
