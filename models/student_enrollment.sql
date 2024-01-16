@@ -35,6 +35,9 @@ users2_cte AS (
         airbytedb.users_permissions_user
 ),
 
+
+
+
 -- CTE for the 'program_enrollments' table
 cte_program_enrollments AS (
     SELECT

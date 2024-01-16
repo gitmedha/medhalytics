@@ -52,6 +52,7 @@ employers_CTE AS (
     SELECT
         "id" AS "emp_id",
         "name" AS "Employer_name"
+        "industry" AS "Emp_Industry"
     FROM 
 	airbytedb.employers
 ),
@@ -122,6 +123,7 @@ SELECT
     u2."updated_by_user",
     s."student_name",
     e."Employer_name" AS "employer_name",
+    e."Emp_Industry" AS "employer_industry"
     s."students_id",
     ec."created_by",
     ec."updated_by",
