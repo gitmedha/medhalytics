@@ -123,7 +123,7 @@ SELECT
     u2."updated_by_user",
     s."student_name",
     e."Employer_name" AS "employer_name",
-    e."Emp_Industry" AS "employer_industry"
+    e."Emp_Industry" AS "employer_industry",
     s."students_id",
     ec."created_by",
     ec."updated_by",
