@@ -40,6 +40,7 @@ users_cte4 AS (
 cte_students AS (
     SELECT
         "id" AS "students_id",
+        "student_id" AS "student_sis_id",
         "full_name" AS "student_name"
     FROM 
     airbytedb.students
@@ -124,7 +125,7 @@ SELECT
     s."student_name",
     e."Employer_name" AS "employer_name",
     e."Emp_Industry" AS "employer_industry",
-    s."students_id",
+    s."student_sis_id",
     ec."created_by",
     ec."updated_by",
     ec."status",
