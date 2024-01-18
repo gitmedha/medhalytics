@@ -190,7 +190,6 @@ SELECT
     cte_program_enrollments."updated_by",
     cte_program_enrollments."created_at",
     cte_program_enrollments."updated_at",
-    cte_program_enrollments."program_name",
     cte_program_enrollments."discount_code_id",
     cte_program_enrollments."medha_program_certificate_status",
     cte_program_enrollments."higher_education_course_name",
