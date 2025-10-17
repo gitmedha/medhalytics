@@ -34,6 +34,8 @@ WITH cte_students AS (
         "how_did_you_hear_about_us" AS "how_did_you_hear_about_us",
         "how_did_you_hear_about_us_other" AS "how_did_you_hear_about_us_other",
         "family_annual_income" AS "family_annual_income",
+        "your_plan_after_your_current_course" AS "your_plan_after_your_current_course",
+        "department" AS "department",
         'SIS' AS "Source"
         FROM
     airbytedb.students
