@@ -31,7 +31,7 @@ Usernames1_CTE AS (
 	airbytedb.users_permissions_user
 ),
 
--- CTE for Employer created by frontend user
+/*-- CTE for Employer created by frontend user
 Usernames2_CTE AS (
     SELECT
         "id" AS "user_id2",
@@ -40,7 +40,7 @@ Usernames2_CTE AS (
 	airbytedb.users_permissions_user
 ),
 
--- CTE for Employer updated by frontend user
+ CTE for Employer updated by frontend user
 Usernames3_CTE AS (
     SELECT
         "id" AS "user_id3",
@@ -48,7 +48,7 @@ Usernames3_CTE AS (
     FROM 
 	airbytedb.users_permissions_user
 ),
-
+*/
 -- CTE for Employer createdby user
 Usernames4_CTE AS (
     SELECT
@@ -264,8 +264,8 @@ LEFT JOIN Usernames3_CTE AS U3 ON E."updated_by_frontend" = U3."user_id3"
 LEFT JOIN Usernames4_CTE AS U4 ON E."created_by" = U4."user_id4"
 LEFT JOIN Usernames5_CTE AS U5 ON E."updated_by" = U5."user_id5"
 LEFT JOIN Usernames6_CTE AS U6 ON O."opportunity_assigned_to" = U6."user_id6"
-LEFT JOIN Usernames7_CTE AS U7 ON O."opportunity_created_by_frontend" = U7."user_id7"
-LEFT JOIN Usernames8_CTE AS U8 ON O."opportunity_updated_by_frontend" = U8."user_id8"
+/*LEFT JOIN Usernames7_CTE AS U7 ON O."opportunity_created_by_frontend" = U7."user_id7"
+LEFT JOIN Usernames8_CTE AS U8 ON O."opportunity_updated_by_frontend" = U8."user_id8"*/
 LEFT JOIN Usernames9_CTE AS U9 ON O."opportunity_created_by" = U9."user_id9"
 LEFT JOIN Usernames10_CTE AS U10 ON O."opportunity_updated_by" = U10."user_id10"
 ORDER BY E."id"
