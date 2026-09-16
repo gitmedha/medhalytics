@@ -184,8 +184,8 @@ SELECT
     cte_program_enrollments."year_of_course_completion",
     cte_program_enrollments."certification_date",
     cte_program_enrollments."course_name",
-    cte_program_enrollments."created_by_frontend",
-    cte_program_enrollments."updated_by_frontend",
+   /* cte_program_enrollments."created_by_frontend",
+    cte_program_enrollments."updated_by_frontend",*/
     cte_program_enrollments."created_by",
     cte_program_enrollments."updated_by",
     cte_program_enrollments."created_at",
