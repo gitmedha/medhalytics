@@ -59,8 +59,8 @@ cte_program_enrollments AS (
         "year_of_course_completion" AS "year_of_course_completion",
         "certification_date" AS "certification_date",
         "course_name_in_current_sis" AS "course_name",
-        "created_by_frontend" AS "created_by_frontend",
-        "updated_by_frontend" AS "updated_by_frontend",
+      /*  "created_by_frontend" AS "created_by_frontend",
+        "updated_by_frontend" AS "updated_by_frontend",*/
         "created_by" AS "created_by",
         "updated_by" AS "updated_by",
         "created_at" AS "created_at",
@@ -98,8 +98,8 @@ batches_cte AS (
         "medha_area" AS "batches_medha_area",
         "enrollment_type" AS "batches_enrollment_type",
         "id_in_current_sis" AS "batches_id_in_current_sis",
-        "created_by_frontend" AS "batches_created_by_frontend",
-        "updated_by_frontend" AS "batches_updated_by_frontend",
+       /* "created_by_frontend" AS "batches_created_by_frontend",
+        "updated_by_frontend" AS "batches_updated_by_frontend",*/
         "created_by" AS "batches_created_by",
         "updated_by" AS "batches_updated_by",
         "created_at" AS "batches_created_at",
@@ -212,8 +212,8 @@ SELECT
     batches_cte."batches_state",
     batches_cte."batches_medha_area",
     batches_cte."batches_enrollment_type",
-    batches_cte."batches_created_by_frontend",
-    batches_cte."batches_updated_by_frontend",
+   /* batches_cte."batches_created_by_frontend",
+    batches_cte."batches_updated_by_frontend",*/
     batches_cte."batches_created_by",
     batches_cte."batches_updated_by",
     batches_cte."batches_created_at",
