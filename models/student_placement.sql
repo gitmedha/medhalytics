@@ -79,8 +79,8 @@ cte_opportunities AS (
         "medha_area" AS "opportunities_medha_area",
         "district" AS "opportunities_district",
         "id_in_current_sis" AS "opportunities_id_in_current_sis",
-        "created_by_frontend" AS "opportunities_created_by_frontend",
-        "updated_by_frontend" AS "opportunities_updated_by_frontend",
+     /*   "created_by_frontend" AS "opportunities_created_by_frontend",
+        "updated_by_frontend" AS "opportunities_updated_by_frontend",*/
         "created_by" AS "opportunities_created_by",
         "updated_by" AS "opportunities_updated_by",
         "created_at" AS "opportunities_created_at",
@@ -101,8 +101,8 @@ cte_employment_connections AS (
         "reason_if_rejected" AS "reason_if_rejected",
         "salary_offered" AS "salary_offered",
         "id_in_current_sis" AS "id_in_current_sis",
-        "created_by_frontend" AS "created_by_frontend",
-        "updated_by_frontend" AS "updated_by_frontend",
+       /* "created_by_frontend" AS "created_by_frontend",
+        "updated_by_frontend" AS "updated_by_frontend",*/
         "created_by" AS "created_by",
         "updated_by" AS "updated_by",
         "created_at" AS "created_at",
@@ -159,8 +159,8 @@ SELECT
     o."opportunities_medha_area",
     o."opportunities_district",
     o."opportunities_id_in_current_sis",
-    o."opportunities_created_by_frontend",
-    o."opportunities_updated_by_frontend",
+   /* o."opportunities_created_by_frontend",
+    o."opportunities_updated_by_frontend",*/
     o."opportunities_created_by",
     o."opportunities_updated_by",
     o."opportunities_created_at" AS "opportunities_created_at",
