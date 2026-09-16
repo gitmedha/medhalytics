@@ -4,7 +4,7 @@ WITH users_cte1 AS (
         "id" AS "user_id1",
         "username" AS "Created_by_user"
     FROM 
-        airbytedb."users-permissions_user"
+        airbytedb.users_permissions_user
 ),
 
 -- CTE for Employment connection - updated by user
@@ -14,7 +14,7 @@ users_cte2 AS (
         "id" AS "user_id2",
         "username" AS "updated_by_user"
     FROM 
-        airbytedb."users-permissions_user"
+        airbytedb.users_permissions_user
 ),
 
 -- CTE for Employment connection - assigned to user 
@@ -23,7 +23,7 @@ users_cte3 AS (
         "id" AS "user_id3",
         "username" AS "employer_connection_assigned_to_user"
     FROM 
-        airbytedb."users-permissions_user"
+        airbytedb.users_permissions_user
 ),
 
 -- CTE for Employment connection - Opportunity assigned to user 
@@ -33,7 +33,7 @@ users_cte4 AS (
         "id" AS "user_id4",
         "username" AS "opportunity_assigned_to_user"
     FROM 
-        airbytedb."users-permissions_user"
+        airbytedb.users_permissions_user
 ),
 
 
