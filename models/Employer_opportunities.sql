@@ -81,7 +81,7 @@ Usernames6_CTE AS (
 
 
 -- CTE for  opportunity created by front end user
-Usernames7_CTE AS (
+/*Usernames7_CTE AS (
     SELECT
         "id" AS "user_id7",
         "username" AS "opportunity_created_by_frontend_user"
@@ -97,7 +97,7 @@ Usernames8_CTE AS (
         "username" AS "oopportunity_updated_by_frontend_user"
     FROM 
 	airbytedb.users_permissions_user    
-),
+),*/
 
 
 -- CTE for  opportunity created by user
