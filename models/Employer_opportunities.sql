@@ -142,8 +142,8 @@ Opportunities_CTE AS (
         "medha_area" AS "opportunity_medha_area",
         "district" AS "opportunity_district",
         "id_in_current_sis" AS "opportunity_id_in_current_sis",
-        "created_by_frontend" AS "opportunity_created_by_frontend",
-        "updated_by_frontend" AS "opportunity_updated_by_frontend",
+      /*  "created_by_frontend" AS "opportunity_created_by_frontend",
+        "updated_by_frontend" AS "opportunity_updated_by_frontend",*/
         "created_by" AS "opportunity_created_by",
         "updated_by" AS "opportunity_updated_by",
         "created_at" AS "opportunity_created_at",
