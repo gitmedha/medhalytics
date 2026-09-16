@@ -23,8 +23,8 @@ WITH cte_students AS (
         "pin_code" AS "pin_code",
         "medha_area" AS "medha_area",
         "district" AS "district",
-        "created_by_frontend" AS "created_by_frontend",
-        "updated_by_frontend" AS "updated_by_frontend",
+       /* "created_by_frontend" AS "created_by_frontend",
+        "updated_by_frontend" AS "updated_by_frontend",*/
         "created_by" AS "created_by",
         "updated_by" AS "updated_by",
         "created_at" AS "created_at",
