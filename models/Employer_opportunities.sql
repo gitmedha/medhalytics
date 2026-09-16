@@ -177,8 +177,8 @@ Employers_CTE AS (
         "medha_area" AS "medha_area",
         "medha_partner" AS "medha_partner",
         "id_in_current_sis" AS "id_in_current_sis",
-        "created_by_frontend" AS "created_by_frontend",
-        "updated_by_frontend" AS "updated_by_frontend",
+  /*      "created_by_frontend" AS "created_by_frontend",
+        "updated_by_frontend" AS "updated_by_frontend",*/
         "created_by" AS "created_by",
         "updated_by" AS "updated_by",
         "created_at" AS "created_at",
@@ -191,13 +191,13 @@ Employers_CTE AS (
 SELECT
     E."id",
     U1."employer_assigned_to_user",
-    U2."created_by_frontend_user",
-    U3."updated_by_frontend_user",
+ /*   U2."created_by_frontend_user",
+    U3."updated_by_frontend_user",*/
     U4."employer_created_by_user",
     U5."employer_updated_by_user",
     U6."opportunity_assigned_to_user",
-    U7."opportunity_created_by_frontend_user",
-    U8."oopportunity_updated_by_frontend_user",
+   /*  U7."opportunity_created_by_frontend_user",
+    U8."oopportunity_updated_by_frontend_user", */
     U9."opportunity_created_by_user",
     U10."opportunity_updated_by_user",
     CCC."ccomponents_common_contacts_full_name",
@@ -223,8 +223,8 @@ SELECT
     E."pin_code" AS "employer_pin_code",
     E."medha_area" AS "employer_medha_area",
     E."medha_partner" AS "employer_medha_partner",
-    E."created_by_frontend" AS "employer_created_by_frontend",
-    E."updated_by_frontend" AS "employer_updated_by_frontend",
+  /*  E."created_by_frontend" AS "employer_created_by_frontend",
+    E."updated_by_frontend" AS "employer_updated_by_frontend",*/
     E."created_by" AS "employer_created_by",
     E."updated_by" AS "employer_updated_by",
     E."created_at" AS "employer_created_at",
@@ -247,8 +247,8 @@ SELECT
     O."opportunity_pin_code",
     O."opportunity_medha_area",
     O."opportunity_district",
-    O."opportunity_created_by_frontend",
-    O."opportunity_updated_by_frontend",
+  /*  O."opportunity_created_by_frontend",
+    O."opportunity_updated_by_frontend",*/
     O."opportunity_created_by",
     O."opportunity_updated_by",
     O."opportunity_created_at",
@@ -259,8 +259,8 @@ LEFT JOIN Employers_CTE AS E ON EC."employer_components_employer_id" = E."id"
 LEFT JOIN Components_Common_Contacts_CTE AS CCC ON EC."employer_components_component_id" = CCC."components_common_contacts_id"
 LEFT JOIN Opportunities_CTE AS O ON E."id" = O."opportunity_employer"
 LEFT JOIN Usernames1_CTE AS U1 ON E."assigned_to" = U1."user_id1"
-LEFT JOIN Usernames2_CTE AS U2 ON E."created_by_frontend" = U2."user_id2"
-LEFT JOIN Usernames3_CTE AS U3 ON E."updated_by_frontend" = U3."user_id3"
+/*LEFT JOIN Usernames2_CTE AS U2 ON E."created_by_frontend" = U2."user_id2"
+LEFT JOIN Usernames3_CTE AS U3 ON E."updated_by_frontend" = U3."user_id3"*/
 LEFT JOIN Usernames4_CTE AS U4 ON E."created_by" = U4."user_id4"
 LEFT JOIN Usernames5_CTE AS U5 ON E."updated_by" = U5."user_id5"
 LEFT JOIN Usernames6_CTE AS U6 ON O."opportunity_assigned_to" = U6."user_id6"
